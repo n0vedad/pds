@@ -1,8 +1,8 @@
 # PDS
 
-Welcome to the repository for the official Bluesky PDS (Personal Data Server). This repository includes container images and documentation designed to assist technical people with self-hosting a Bluesky PDS.
+Welcome to the repository for the official Bluesky PDS (Personal Data Server). This repository includes container images and documentation designed to assist technical people with hosting a Bluesky PDS.
 
-Head over to the [AT Protocol PDS Admins Discord](https://discord.gg/UWS6FFdhMe) to get started!
+Head over to the [AT Protocol PDS Admins Discord](https://discord.gg/E4Urw3xS) to chat with other folks hosting instances and get important updates about the PDS distribution!
 
 ## Table of Contents
 
@@ -51,7 +51,7 @@ Please visit the [AT Protocol docs](https://atproto.com/guides/overview) for add
 
 ### What is the current status of federation?
 
-As of Feb, 2024, the AT Protocol data service (PDS) is now open to federation for self-hosters! 
+As of Spring 2024, the AT Protocol network is open to federation!
 
 ✅ Federated domain handles (e.g. `@nytimes.com`)
 
@@ -61,11 +61,9 @@ As of Feb, 2024, the AT Protocol data service (PDS) is now open to federation fo
 
 ✅ Federated app views (API service)
 
-✅ Federated data for self-hosters (PDS hosting)
+✅ Federated data (PDS hosting)
 
 ✅ Federated moderation (labeling)
-
-🚧 Federated data for large service providers (coming soon)
 
 ### What should I know about running a PDS in the developer sandbox?
 
@@ -78,9 +76,6 @@ Read the [SANDBOX.md](https://github.com/bluesky-social/pds/blob/main/SANDBOX.md
 ## Self-hosting PDS
 
 Self-hosting a Bluesky PDS means running your own Personal Data Server that is capable of federating with the wider Bluesky social network.
-
-> [!IMPORTANT]
-> Initially to join the network you'll need to join the [AT Protocol PDS Admins Discord](https://discord.gg/UWS6FFdhMe) and register the hostname of your PDS. We recommend doing so before bringing your PDS online. In the future, this registration check will not be required.
 
 ### Preparation for self-hosting PDS
 
@@ -165,15 +160,24 @@ sudo bash installer.sh
 
 ### Verifying that your PDS is online and accessible
 
+> [!TIP]
+> The most common problems with getting PDS content consumed in the live network are when folks substitute the provided Caddy configuration for nginx, apache, or similar reverse proxies. Getting TLS certificates, WebSockets, and virtual server names all correct can be tricky. We are not currently providing tech support for other configurations.
+
 You can check if your server is online and healthy by requesting the healthcheck endpoint.
 
-You can visit `https://example.com/xrpc/_health` in your browser. You should see a JSON response with a version.
-
-For example:
+You can visit `https://example.com/xrpc/_health` in your browser. You should see a JSON response with a version, like:
 
 ```
 {"version":"0.2.2-beta.2"}
 ```
+
+You'll also need to check that WebSockets are working, for the rest of the network to pick up content from your PDS. You can test by installing a tool like `wsdump` and running a command like:
+
+```bash
+wsdump "wss://example.com/xrpc/com.atproto.sync.subscribeRepos?cursor=0"
+```
+
+Note that there will be no events output on the WebSocket until they are created in the PDS, so the above command may continue to run with no output if things are configured successfully.
 
 ### Creating an account using pdsadmin
 
