@@ -2,7 +2,7 @@
 
 Welcome to the repository for the official Bluesky PDS (Personal Data Server). This repository includes container images and documentation designed to assist technical people with hosting a Bluesky PDS.
 
-Head over to the [AT Protocol PDS Admins Discord](https://discord.gg/E4Urw3xS) to chat with other folks hosting instances and get important updates about the PDS distribution!
+Head over to the [AT Protocol PDS Admins Discord](https://discord.gg/e7hpHxRfBP) to chat with other folks hosting instances and get important updates about the PDS distribution!
 
 ## Table of Contents
 
@@ -15,7 +15,6 @@ Head over to the [AT Protocol PDS Admins Discord](https://discord.gg/E4Urw3xS) t
   * [What is AT Protocol?](#what-is-at-protocol)
   * [Where is the code?](#where-is-the-code)
   * [What is the current status of federation?](#what-is-the-current-status-of-federation)
-  * [What should I know about running a PDS in the developer sandbox?](#what-should-i-know-about-running-a-pds-in-the-developer-sandbox)
 - [Self-hosting PDS](#self-hosting-pds)
   * [Preparation for self-hosting PDS](#preparation-for-self-hosting-pds)
   * [Open your cloud firewall for HTTP and HTTPS](#open-your-cloud-firewall-for-http-and-https)
@@ -46,7 +45,7 @@ Please visit the [AT Protocol docs](https://atproto.com/guides/overview) for add
 
 ### Where is the code?
 
-* [TypeScript code](https://github.com/bluesky-social/atproto)
+* [TypeScript code](https://github.com/bluesky-social/atproto/tree/main/packages/pds)
 * [Go code](https://github.com/bluesky-social/indigo)
 
 ### What is the current status of federation?
@@ -64,14 +63,6 @@ As of Spring 2024, the AT Protocol network is open to federation!
 ✅ Federated data (PDS hosting)
 
 ✅ Federated moderation (labeling)
-
-### What should I know about running a PDS in the developer sandbox?
-
-Developers may now run self-hosted PDS hosts on the production network!
-
-Though it is still recommended to run experiments in the developer sandbox network.
-
-Read the [SANDBOX.md](https://github.com/bluesky-social/pds/blob/main/SANDBOX.md) for an overview of the sandbox network.
 
 ## Self-hosting PDS
 
